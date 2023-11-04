@@ -9,6 +9,11 @@ kernel_version = platform.release()
 usb_module_path = f"/lib/modules/{kernel_version}/kernel/drivers/usb/storage/usb-storage.ko"
 backup_path = '.sysui/backup/'
 
+
+if os.geteuid() != 0:
+    print("Please run this script as root (with sudo).")
+    exit(1)
+
 def create_backup_path():
     if not os.path.exists(backup_path):
         os.makedirs(backup_path)
