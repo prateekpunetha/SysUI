@@ -2,6 +2,7 @@
 
 import tkinter as tk
 import os
+import subprocess
 
 if os.getuid() != 0:
     print("Please run this script as root (with sudo).")
@@ -16,6 +17,8 @@ def add_permit_root_login():
         if 'PermitRootLogin yes' not in file_content and 'PermitRootLogin no' not in file_content:
             with open(config_path, 'a') as updated_file:
                 updated_file.write('\n' + root_login_line)
+            status_label.config(text=f'Configuration added successfully')
+            reload_ssh()
 
 def enable_root_login():
     with open(config_path, 'r') as file:
@@ -28,6 +31,7 @@ def enable_root_login():
         with open(config_path, 'w') as updated_file:
             updated_file.write(updated_content)
             status_label.config(text=f'RootLogin Enabled')
+            reload_ssh()
     else:
         status_label.config(text=f"PermitRootLogin configuration not found, click on add configuration!")
 
@@ -42,9 +46,17 @@ def disable_root_login():
         updated_content = content.replace('PermitRootLogin yes', 'PermitRootLogin no')
         with open(config_path, 'w') as updated_file:
             updated_file.write(updated_content)
-            status_label.config(text=f'RootLogin disabled')
+            status_label.config(text=f'RootLogin Disabled')
+            reload_ssh()
     else:
         status_label.config(text=f"PermitRootLogin configuration not found, click on add configuration!")
+
+def reload_ssh():
+    try:
+        subprocess.run(["systemctl", "reload", "sshd"], check=True)
+    except subprocess.CalledProcessError:
+        status_label.config(text="Failed to reload SSH. Manually restart ssh service")
+
 
 
 # Create the main window
