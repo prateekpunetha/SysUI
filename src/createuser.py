@@ -25,9 +25,8 @@ def add_user():
     except Exception as e:
         result_label.configure(text=f"Error: {str(e)}")
 
-# Usual stuff
-customtkinter.set_appearance_mode("dark")
-customtkinter.set_default_color_theme("green")
+# Theme
+customtkinter.set_default_color_theme("../material.json")
 
 # Create main window
 app = customtkinter.CTk()

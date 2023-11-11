@@ -40,9 +40,8 @@ def enable_usb():
     except Exception as e:
         status_label.configure(text=f"Error: {e}")
 
-# usual stuff
-customtkinter.set_appearance_mode("dark")
-customtkinter.set_default_color_theme("green")
+# Theme
+customtkinter.set_default_color_theme("../material.json")
 
 # Create the main window
 app = customtkinter.CTk()

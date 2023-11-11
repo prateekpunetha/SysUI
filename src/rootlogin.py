@@ -57,10 +57,8 @@ def reload_ssh():
     except subprocess.CalledProcessError:
         status_label.configure(text="Failed to reload SSH. Manually restart ssh service")
 
-
-# Usual stuff
-customtkinter.set_appearance_mode("dark")
-customtkinter.set_default_color_theme("green")
+# Theme
+customtkinter.set_default_color_theme("../material.json")
 
 # Create main window
 
