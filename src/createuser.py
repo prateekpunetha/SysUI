@@ -1,26 +1,12 @@
 #!/usr/bin/env python3
 
-import tkinter as tk
+import customtkinter
 import subprocess
 import os
-
-root = tk.Tk()
-root.title("Add User")
 
 if os.geteuid() != 0:
     print("Please run this script as root (with sudo).")
     exit(1)
-
-# Create label and entry fields for username and password
-username_label = tk.Label(root, text="Username:")
-username_label.pack()
-username_entry = tk.Entry(root)
-username_entry.pack()
-
-password_label = tk.Label(root, text="Password:")
-password_label.pack()
-password_entry = tk.Entry(root, show="*")
-password_entry.pack()
 
 def add_user():
     username = username_entry.get()
@@ -33,19 +19,38 @@ def add_user():
         stdout, stderr = process.communicate(input=password)
 
         if process.returncode == 0:
-            result_label.config(text="User added successfully")
+            result_label.configure(text="User added successfully")
         else:
-            result_label.config(text=f"Error: {stderr}")
+            result_label.configure(text=f"Error: {stderr}")
     except Exception as e:
-        result_label.config(text=f"Error: {str(e)}")
+        result_label.configure(text=f"Error: {str(e)}")
+
+# Usual stuff
+customtkinter.set_appearance_mode("dark")
+customtkinter.set_default_color_theme("green")
+
+# Create main window
+app = customtkinter.CTk()
+app.title("Add User")
+
+# Create label and entry fields for username and password
+username_label = customtkinter.CTkLabel(app, text="Username")
+username_label.pack()
+username_entry = customtkinter.CTkEntry(app)
+username_entry.pack()
+
+password_label = customtkinter.CTkLabel(app, text="Password")
+password_label.pack()
+password_entry =customtkinter.CTkEntry(app, show="*")
+password_entry.pack()
 
 # Create button to trigger user addition
-add_button = tk.Button(root, text="Add User", command=add_user)
+add_button = customtkinter.CTkButton(app, text="Add User", command=add_user)
 add_button.pack()
 
 # Create label to display result
-result_label = tk.Label(root, text="")
+result_label = customtkinter.CTkLabel(app, text="")
 result_label.pack()
 
 # Start the GUI main loop
-root.mainloop()
+app.mainloop()
