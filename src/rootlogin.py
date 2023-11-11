@@ -66,6 +66,7 @@ customtkinter.set_default_color_theme("green")
 
 app = customtkinter.CTk()
 app.title("Enable/Disable RootLogin")
+app.geometry("400x300")
 
 # Create buttons
 

@@ -47,6 +47,7 @@ customtkinter.set_default_color_theme("green")
 # Create the main window
 app = customtkinter.CTk()
 app.title("USB Disable/Enable")
+app.geometry("400x300")
 
 # Create buttons
 enable_button = customtkinter.CTkButton(app, text="Enable USB", command=enable_usb)

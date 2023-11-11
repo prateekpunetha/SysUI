@@ -31,6 +31,7 @@ customtkinter.set_default_color_theme("green")
 # Create main window
 app = customtkinter.CTk()
 app.title("Delete User")
+app.geometry("400x300")
 
 # Create labels and entry fields for username
 username_label = customtkinter.CTkLabel(app, text="Username")

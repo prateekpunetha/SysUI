@@ -32,6 +32,7 @@ customtkinter.set_default_color_theme("green")
 # Create main window
 app = customtkinter.CTk()
 app.title("Add User")
+app.geometry("400x300")
 
 # Create label and entry fields for username and password
 username_label = customtkinter.CTkLabel(app, text="Username")
