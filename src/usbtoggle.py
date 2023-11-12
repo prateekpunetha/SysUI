@@ -7,7 +7,7 @@ import shutil
 
 kernel_version = platform.release()
 usb_module_path = f"/lib/modules/{kernel_version}/kernel/drivers/usb/storage/usb-storage.ko"
-backup_path = '.sysui/backup/'
+backup_path = '$HOME/.sysui/backup/'
 
 
 if os.geteuid() != 0:
