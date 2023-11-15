@@ -35,6 +35,9 @@ def ufw_allow():
     port_number = port_number_entry.get()
     run_command(f'sudo ufw allow {port_number}')
 
+def ufw_reload():
+    run_command(f'sudo ufw reload')
+
 def ufw_reset():
     run_command(f'sudo ufw --force reset')
 
@@ -71,6 +74,10 @@ enable_button.pack()
 # disable button
 disable_button = customtkinter.CTkButton(app, text="Disable Firewall", command=ufw_disable)
 disable_button.pack()
+
+# reload button
+reload_button = customtkinter.CTkButton(app, text="Reload Firewall", command=ufw_reload)
+reload_button.pack()
 
 # reset button
 reset_button = customtkinter.CTkButton(app, text="Reset", command=ufw_reset)
