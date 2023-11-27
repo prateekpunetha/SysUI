@@ -2,12 +2,6 @@
 
 import customtkinter
 import subprocess
-import os
-
-if os.geteuid() != 0:
-    print("Please run this script as root (with sudo).")
-    exit(1)
-
 
 def run_command(cmd):
     try:

@@ -1,12 +1,7 @@
 #!/usr/bin/env python3
 
 import customtkinter
-import os
 import subprocess
-
-if os.getuid() != 0:
-    print("Please run this script as root (with sudo).")
-    exit(1)
 
 config_path = '/etc/ssh/sshd_config'
 

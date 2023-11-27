@@ -7,12 +7,7 @@ import shutil
 
 kernel_version = platform.release()
 usb_module_path = f"/lib/modules/{kernel_version}/kernel/drivers/usb/storage/usb-storage.ko"
-backup_path = '$HOME/.sysui/backup/'
-
-
-if os.geteuid() != 0:
-    print("Please run this script as root (with sudo).")
-    exit(1)
+backup_path = '~/HOME/.sysui/backup/'
 
 def create_backup_path():
     if not os.path.exists(backup_path):
