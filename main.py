@@ -3,13 +3,11 @@ from PIL import Image, ImageTk
 import subprocess
 import os
 
-if os.geteuid() != 0:
-    print("Please run this script as root (with sudo).")
-    exit(1)
-
 def execute_python_script(script_path):
     try:
-        subprocess.run(['python', script_path], check=True)
+        env = os.environ.copy()
+        env['SUDO_ASKPASS'] = 'zenity --password'
+        subprocess.run(['sudo', '-A', 'python', script_path], check=True, env=env)
     except subprocess.CalledProcessError as e:
         print(f"Error executing script: {e}")
 
