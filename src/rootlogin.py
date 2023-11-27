@@ -53,7 +53,7 @@ def reload_ssh():
         status_label.configure(text="Failed to reload SSH. Manually restart ssh service")
 
 # Theme
-customtkinter.set_default_color_theme("../material.json")
+customtkinter.set_default_color_theme("material.json")
 
 # Create main window
 

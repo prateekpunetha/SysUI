@@ -36,7 +36,7 @@ def enable_usb():
         status_label.configure(text=f"Error: {e}")
 
 # Theme
-customtkinter.set_default_color_theme("../material.json")
+customtkinter.set_default_color_theme("material.json")
 
 # Create the main window
 app = customtkinter.CTk()

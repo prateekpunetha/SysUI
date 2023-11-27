@@ -36,7 +36,7 @@ def ufw_reset():
     run_command(f'sudo ufw --force reset')
 
 # Theme
-customtkinter.set_default_color_theme("../material.json")
+customtkinter.set_default_color_theme("material.json")
 
 # create main window
 app = customtkinter.CTk()

@@ -21,7 +21,7 @@ def add_user():
         result_label.configure(text=f"Error: {str(e)}")
 
 # Theme
-customtkinter.set_default_color_theme("../material.json")
+customtkinter.set_default_color_theme("material.json")
 
 # Create main window
 app = customtkinter.CTk()
