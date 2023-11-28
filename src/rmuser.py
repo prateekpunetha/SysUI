@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import customtkinter
+from customtkinter import CTkEntry, CTkLabel, CTkButton
 import subprocess
 
 def delete_user():
@@ -27,18 +28,19 @@ app.title("Delete User")
 app.geometry("400x300")
 
 # Create labels and entry fields for username
-username_label = customtkinter.CTkLabel(app, text="Username")
-username_label.pack()
-username_entry = customtkinter.CTkEntry(app)
-username_entry.pack()
+username_label = CTkLabel(app, text="Username")
+username_label.pack(pady=(20,10))
+
+username_entry = CTkEntry(app)
+username_entry.pack(pady=(0,10))
 
 # Create label to display the result
-result_label = customtkinter.CTkLabel(app, text="")
+result_label = CTkLabel(app, text="")
 result_label.pack()
 
 # Create button to trigger user deletion
-delete_button = customtkinter.CTkButton(app, text="Delete User", command=delete_user)
-delete_button.pack()
+delete_button = CTkButton(app, text="Delete User", command=delete_user)
+delete_button.pack(pady=(2,20))
 
 # Start GUI main loop
 app.mainloop()

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import customtkinter
+from customtkinter import CTkLabel, CTkEntry, CTkButton
 import os
 import platform
 import shutil
@@ -44,14 +45,14 @@ app.title("USB Disable/Enable")
 app.geometry("400x300")
 
 # Create buttons
-enable_button = customtkinter.CTkButton(app, text="Enable USB", command=enable_usb)
+enable_button = CTkButton(app, text="Enable USB", command=enable_usb)
 enable_button.pack()
 
-disable_button = customtkinter.CTkButton(app, text="Disable USB", command=disable_usb)
+disable_button = CTkButton(app, text="Disable USB", command=disable_usb)
 disable_button.pack()
 
 # Status Label
-status_label = customtkinter.CTkLabel(app, text="", width=40)
+status_label = CTkLabel(app, text="", width=40)
 status_label.pack()
 
 app.mainloop()

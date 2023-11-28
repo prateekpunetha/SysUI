@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import customtkinter
+from customtkinter import CTkLabel, CTkEntry, CTkButton
 import subprocess
 
 def run_command(cmd):
@@ -43,38 +44,38 @@ app = customtkinter.CTk()
 app.title("Manage Firewall")
 app.geometry("400x300")
 
-port_number_label = customtkinter.CTkLabel(app, text="Allow Port Number")
+port_number_label = CTkLabel(app, text="Allow Port Number")
 port_number_label.pack()
-port_number_entry = customtkinter.CTkEntry(app)
+port_number_entry = CTkEntry(app)
 port_number_entry.pack()
 
 # label to display result
-result_label = customtkinter.CTkLabel(app, text="")
+result_label = CTkLabel(app, text="")
 
 result_label.pack()
 
 # allow button
-enable_button = customtkinter.CTkButton(app, text="Allow", command=ufw_allow)
+enable_button = CTkButton(app, text="Allow", command=ufw_allow)
 enable_button.pack()
 
 # deny button
-enable_button = customtkinter.CTkButton(app, text="Deny", command=ufw_deny)
+enable_button = CTkButton(app, text="Deny", command=ufw_deny)
 enable_button.pack()
 
 # enable button
-enable_button = customtkinter.CTkButton(app, text="Enable Firewall", command=ufw_enable)
+enable_button = CTkButton(app, text="Enable Firewall", command=ufw_enable)
 enable_button.pack()
 
 # disable button
-disable_button = customtkinter.CTkButton(app, text="Disable Firewall", command=ufw_disable)
+disable_button = CTkButton(app, text="Disable Firewall", command=ufw_disable)
 disable_button.pack()
 
 # reload button
-reload_button = customtkinter.CTkButton(app, text="Reload Firewall", command=ufw_reload)
+reload_button = CTkButton(app, text="Reload Firewall", command=ufw_reload)
 reload_button.pack()
 
 # reset button
-reset_button = customtkinter.CTkButton(app, text="Reset", command=ufw_reset)
+reset_button = CTkButton(app, text="Reset", command=ufw_reset)
 reset_button.pack()
 
 app.mainloop()

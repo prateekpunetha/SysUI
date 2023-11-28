@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import customtkinter
+from customtkinter import CTkLabel, CTkEntry, CTkButton
 import subprocess
 
 config_path = '/etc/ssh/sshd_config'
@@ -63,17 +64,17 @@ app.geometry("400x300")
 
 # Create buttons
 
-enable_button = customtkinter.CTkButton(app, text="Enable RootLogin", command=enable_root_login)
+enable_button = CTkButton(app, text="Enable RootLogin", command=enable_root_login)
 enable_button.pack()
 
-disable_button = customtkinter.CTkButton(app, text="Disable RootLogin", command=disable_root_login)
+disable_button = CTkButton(app, text="Disable RootLogin", command=disable_root_login)
 disable_button.pack()
 
-add_button = customtkinter.CTkButton(app, text="Add Configuration", command=add_permit_root_login)
+add_button = CTkButton(app, text="Add Configuration", command=add_permit_root_login)
 add_button.pack()
 
 # Status Label
-status_label = customtkinter.CTkLabel(app, text="", width=40)
+status_label = CTkLabel(app, text="", width=40)
 status_label.pack()
 
 app.mainloop()
