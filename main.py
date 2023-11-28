@@ -15,6 +15,10 @@ def create_user():
     script_path = 'src/createuser.py'
     execute_python_script(script_path)
 
+def rm_user():
+    script_path = 'src/rmuser.py'
+    execute_python_script(script_path)
+
 def manage_ssh():
     script_path = 'src/rootlogin.py'
     execute_python_script(script_path)
@@ -61,6 +65,7 @@ frame2.pack(expand=True, fill='both', side='top')
 
 labels_info = [
     {'image': 'img/hundred.png', 'text': 'Create User', 'command': create_user},
+    {'image': 'img/remove.png', 'text': 'Remove User', 'command': rm_user},
     {'image': 'img/shield.png', 'text': 'Manage Firewall', 'command': manage_firewall},
     {'image': 'img/ssh.png', 'text': 'SSH Settings', 'command': manage_ssh},
     {'image': 'img/usb.png', 'text': 'Toggle USB', 'command': toggle_usb},
@@ -94,4 +99,3 @@ win.bind("<Configure>", on_resize)
 toggle_visibility()  # Initialize visibility
 
 win.mainloop()
-
