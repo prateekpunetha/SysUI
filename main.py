@@ -3,11 +3,19 @@ from PIL import Image, ImageTk
 import subprocess
 import os
 
+def get_password():
+    try:
+        password = subprocess.check_output(['zenity', '--password'], text=True).strip()
+        return password
+    except subprocess.CalledProcessError as e:
+        print(f"Error getting password: {e}")
+        return None
+
 def execute_python_script(script_path):
     try:
-        env = os.environ.copy()
-        env['SUDO_ASKPASS'] = 'zenity --password'
-        subprocess.run(['sudo', '-A', 'python', script_path], check=True, env=env)
+        password = get_password()
+        if password is not None:
+            subprocess.run(['sudo', '-S', 'python', script_path], input=password, check=True, text=True)
     except subprocess.CalledProcessError as e:
         print(f"Error executing script: {e}")
 
