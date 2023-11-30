@@ -20,21 +20,21 @@ def disable_usb():
     try:
         if os.path.exists(usb_module_path):
             shutil.move(usb_module_path, backup_path)
-            status_label.configure(text="USB Disabled!")
+            status_label.configure(text="USB Disabled!", fg_color="#A3BE8C")
         else:
-            status_label.configure(text="USB is already disabled!")
+            status_label.configure(text="USB is already disabled!", fg_color="#A3BE8C")
     except Exception as e:
-        status_label.configure(text=f"Error: {e}")
+        status_label.configure(text=f"Error: {e}", fg_color="#FF4151")
 
 def enable_usb():
     try:
         if os.path.exists(backup_path):
             shutil.move(backup_path, usb_module_path)
-            status_label.configure(text="USB enabled!")
+            status_label.configure(text="USB enabled!", fg_color="#A3BE8C")
         else:
-            status_label.configure(text="USB is already enabled")
+            status_label.configure(text="USB is already enabled", fg_color="#A3BE8C")
     except Exception as e:
-        status_label.configure(text=f"Error: {e}")
+        status_label.configure(text=f"Error: {e}", fg_color="#FF4151")
 
 # Theme
 customtkinter.set_default_color_theme("material.json")

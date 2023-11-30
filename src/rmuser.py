@@ -13,11 +13,12 @@ def delete_user():
         process.wait()
 
         if process.returncode == 0:
-            result_label.configure(text=f"User {username} deleted successfully")
+            result_label.configure(text=f"User {username} deleted successfully",
+                                   fg_color="#A3BE8C")
         else:
-            result_label.configure(text=f"Error: {stderr}")
+            result_label.configure(text=f"Error: {stderr}", fg_color="#ff4151")
     except Exception as e:
-        result_label.configure(text=f"Error: {str(e)}")
+        result_label.configure(text=f"Error: {str(e)}", fg_color="#FF4151")
 
 # Theme
 customtkinter.set_default_color_theme("material.json")

@@ -13,7 +13,7 @@ def add_permit_root_login():
         if 'PermitRootLogin yes' not in file_content and 'PermitRootLogin no' not in file_content:
             with open(config_path, 'a') as updated_file:
                 updated_file.write('\n' + root_login_line)
-            status_label.configure(text=f'Configuration added successfully')
+            status_label.configure(text=f'Configuration added successfully', fg_color="#A3BE8C")
             reload_ssh()
 
 def enable_root_login():
@@ -21,15 +21,15 @@ def enable_root_login():
         content = file.read()
 
     if 'PermitRootLogin yes' in content:
-        status_label.configure(text=f"Root Login is already enabled")
+        status_label.configure(text=f"Root Login is already enabled", fg_color="#A3BE8C")
     elif 'PermitRootLogin no' in content:
         updated_content = content.replace('PermitRootLogin no', 'PermitRootLogin yes')
         with open(config_path, 'w') as updated_file:
             updated_file.write(updated_content)
-            status_label.configure(text=f'RootLogin Enabled')
+            status_label.configure(text=f'RootLogin Enabled', fg_color="#A3BE8C")
             reload_ssh()
     else:
-        status_label.configure(text=f"PermitRootLogin configuration not found, click on add configuration!")
+        status_label.configure(text=f"PermitRootLogin configuration not found, click on add configuration!", fg_color="#ff4151")
 
 
 def disable_root_login():
@@ -37,21 +37,21 @@ def disable_root_login():
         content = file.read()
 
     if 'PermitRootLogin no' in content:
-        status_label.configure(text=f"Root Login is already disabled")
+        status_label.configure(text=f"Root Login is already disabled", fg_color="#A3BE8C")
     elif 'PermitRootLogin yes' in content:
         updated_content = content.replace('PermitRootLogin yes', 'PermitRootLogin no')
         with open(config_path, 'w') as updated_file:
             updated_file.write(updated_content)
-            status_label.configure(text=f'RootLogin Disabled')
+            status_label.configure(text=f'RootLogin Disabled', fg_color="#A3BE8C")
             reload_ssh()
     else:
-        status_label.configure(text=f"PermitRootLogin configuration not found, click on add configuration!")
+        status_label.configure(text=f"PermitRootLogin configuration not found, click on add configuration!", fg_color="#ff4151")
 
 def reload_ssh():
     try:
         subprocess.run(["systemctl", "reload", "sshd"], check=True)
     except subprocess.CalledProcessError:
-        status_label.configure(text="Failed to reload SSH. Manually restart ssh service")
+        status_label.configure(text="Failed to reload SSH. Manually restart ssh service", fg_color="#ff4151")
 
 # Theme
 customtkinter.set_default_color_theme("material.json")
