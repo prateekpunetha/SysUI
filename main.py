@@ -4,6 +4,12 @@ from tkinter import *
 from PIL import Image, ImageTk
 import subprocess
 import os
+import sys
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 
 def get_password():
     try:
@@ -74,11 +80,11 @@ frame2 = Frame(frame1, background='white')
 frame2.pack(expand=True, fill='both', side='top')
 
 labels_info = [
-    {'image': 'img/hundred.png', 'text': 'Create User', 'command': create_user},
-    {'image': 'img/remove.png', 'text': 'Remove User', 'command': rm_user},
-    {'image': 'img/shield.png', 'text': 'Manage Firewall', 'command': manage_firewall},
-    {'image': 'img/ssh.png', 'text': 'SSH Settings', 'command': manage_ssh},
-    {'image': 'img/usb.png', 'text': 'Toggle USB', 'command': toggle_usb},
+    {'image': resource_path('img/hundred.png'), 'text': 'Create User', 'command': create_user},
+    {'image': resource_path('img/remove.png'), 'text': 'Remove User', 'command': rm_user},
+    {'image': resource_path('img/shield.png'), 'text': 'Manage Firewall', 'command': manage_firewall},
+    {'image': resource_path('img/ssh.png'), 'text': 'SSH Settings', 'command': manage_ssh},
+    {'image': resource_path('img/usb.png'), 'text': 'Toggle USB', 'command': toggle_usb},
 ]
 
 labels = []
