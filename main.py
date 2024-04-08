@@ -47,6 +47,11 @@ def toggle_usb():
     script_path = 'src/usbtoggle.py'
     execute_python_script(script_path)
 
+def encrypt_file():
+    script_path = 'src/encfile.py'
+    execute_python_script(script_path)
+
+
 def bind_label_click(label, func):
     label.bind("<Button-1>", lambda event: func())
     label.bind("<Enter>", lambda event: label.config(cursor="hand2"))
@@ -85,6 +90,7 @@ labels_info = [
     {'image': resource_path('img/shield.png'), 'text': 'Manage Firewall', 'command': manage_firewall},
     {'image': resource_path('img/ssh.png'), 'text': 'SSH Settings', 'command': manage_ssh},
     {'image': resource_path('img/usb.png'), 'text': 'Toggle USB', 'command': toggle_usb},
+    {'image': resource_path('img/enc.png'), 'text': 'Secure File', 'command': encrypt_file},
 ]
 
 labels = []
